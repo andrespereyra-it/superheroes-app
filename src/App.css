@@ -1,0 +1,63 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+}
+
+.App-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.box {
+  padding: 5rem;
+  background: radial-gradient(rgb(100, 100, 100), rgb(150, 150, 150), #5d5f63);
+}
+
+.card-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  background: #757679;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.list {
+  text-align: left;
+  list-style: none;
+  font-size: 1rem;
+}
+
+form {
+  border: 1px solid rgba(0, 0, 0, 0.253);
+  padding: 3rem;
+}
+
+.loginForm .error {
+  color: #7c0a0b;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.loginForm .success {
+  text-align: center;
+  font-size: 14px;
+  padding-top: 20px;
+  color: #02a802;
+}
+
+.btn-secondary {
+  margin: 2px;
+}
