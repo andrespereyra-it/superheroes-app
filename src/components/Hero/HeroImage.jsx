@@ -14,7 +14,7 @@ function HeroImage(props) {
         }}
       >
         <img
-          className="card-img img-fluid"
+          className="card-img"
           src={data && data.image.url}
           alt={data && data.id}
         />

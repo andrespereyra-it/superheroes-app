@@ -1,16 +1,18 @@
-.gf-header {
+.header {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 50px;
-  background-color: #5d5f63;
+  background: rgb(58, 112, 66);
 }
 
-.gf-header a {
+.header a {
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
+  padding: 5px;
 }
 
-.gf-header a:hover {
+.header a:hover {
   text-decoration: underline;
 }

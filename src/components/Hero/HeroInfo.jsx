@@ -31,8 +31,15 @@ function HeroInfo(props) {
     props.setWeightAvg([...props.weightAvg, data.appearance.weight]);
 
     props.setTeamPlayers([...props.teamPlayers, data]);
-    localStorage.setItem("teamPlayers", JSON.stringify(props.teamPlayers));
+    localStorage.setItem("teamPlayers", JSON.stringify(props.teamPlayers));    
+
+    /* props.setWentBack(true) */
+    /* handleDisabled(); */
   };
+
+  /* const handleDisabled = () => {
+    props.setAddHeroDisabled("disabled");
+  } */
 
   return (
     <>
@@ -41,7 +48,7 @@ function HeroInfo(props) {
           props.setSwapCard(false);
         }}
       >
-        <div>
+        <div class="card-header bg-transparent border-success">
           <h5 className="card-title">{data && data.name}</h5>
         </div>
         <div className="card-body">
@@ -59,8 +66,9 @@ function HeroInfo(props) {
             <li>Power{data && data.powerstats.power}</li>
             <li>Combat {data && data.powerstats.combat}</li>
           </ul>
+          <div class="card-footer bg-transparent border-success info-buttons">
           <NavLink
-            className="btn btn-secondary"
+            className="btn btn-outline-success info-button"
             to={{
               pathname: "/detail",
               state: data,
@@ -70,10 +78,12 @@ function HeroInfo(props) {
           </NavLink>
           <input
             type="button"
-            className="btn btn-secondary"
-            value="Add to the team"
+            className="btn btn-outline-success info-button"
+            value="Add Hero"
             onClick={addTeamMember}
+            disabled={props.addHeroDisabled}
           />
+          </div>
         </div>
       </div>
     </>

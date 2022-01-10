@@ -18,17 +18,18 @@ function HeroDetail(props) {
                   <img
                     width="220"
                     className="card-img-top img-heroe img-fluid"
+                    style={{border: "1px solid rgba(0, 0, 0, 0.253)"}}
                     src={data && data.image.url}
                     alt={data && data.id}
                   />
                 </div>
               </div>
-              <div className="col-md-8 text-white">
+              <div style={{border: "1px solid #fff"}} className="col-md-8 text-white">
                 <br />
                 <h5>
                   <strong>{data && data.name}</strong>
                 </h5>
-                <ul className="list text-white">
+                <ul style={{textAlign:"justify",padding:"20px"}}className="list text-white">
                   <li>Weight: {data && data.appearance.weight}</li>
                   <li>Height: {data && data.appearance.height}</li>
                   <li>Name: {data && data.name}</li>
@@ -37,9 +38,9 @@ function HeroDetail(props) {
                   <li>Hair-Color: {data && data.appearance["hair-color"]}</li>
                   <li>Base: {data && data.work.base}</li>
                 </ul>
+                <Link className="btn btn-outline-dark" to="/">Go Back</Link>
               </div>
             </div>
-            <Link to="/">Go Back</Link>
           </div>
         </div>
       </div>

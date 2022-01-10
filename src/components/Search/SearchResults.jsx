@@ -10,7 +10,7 @@ function SearchResults(props) {
   return (
     <>
       <br />
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className="row row-cols-3">
         {superheroData.map((superhero) => (
           <SearchResultItem
             data={superhero}
@@ -35,6 +35,10 @@ function SearchResults(props) {
             setWeightAvg={props.setWeightAvg}
             teamPlayers={props.teamPlayers}
             setTeamPlayers={props.setTeamPlayers}
+            addHeroDisabled={props.addHeroDisabled} 
+            setAddHeroDisabled={props.setAddHeroDisabled}
+            /* wentBack={props.wentBack}
+            setWentBack={props.setWentBack} */
           />
         ))}
       </div>

@@ -109,7 +109,7 @@ const Team = (props) => {
   ]);
 
   return (
-    <div className="border border-green mt-5 pt-4">
+    <div className="team-container border border-white">
       {props.theArray.length === 0 ? (
         <p className="py-4 text-center text-white">
           You don't have a team yet, please add a hero.
@@ -118,55 +118,62 @@ const Team = (props) => {
         <>
           <div className="container text-white">
             <div className="row justify-content-around">
-              <div className="col-md-5 col-sm-12">
-                <p className="display-8">
+              <div className="col-md-6 team-col-line">
+              <div style={{paddingTop:"30px"}} className="mb-4">
+                <span className="display-6">
                   Your Team Statistics
-                  <p style={{ fontSize: "large" }}>
-                    Average Height {heightAvg}{" "}
-                  </p>
-                  <p style={{ fontSize: "large" }}>
-                    Average Weight {weightAvg}{" "}
-                  </p>
-                </p>
-                <div className="mb-4">
+                  </span>
+                  <div style={{ padding: "90px" }}>
+                    <p style={{ fontSize: "large" }}>
+                      Average Height {heightAvg}{" "}
+                    </p>
+                    <p style={{ fontSize: "large" }}>
+                      Average Weight {weightAvg}{" "}
+                    </p>
+                  </div></div>
+              </div>
+              <div className="col-md-6">
+                <div style={{paddingTop:"30px"}} className="mb-4">
                   <span className="display-6">PowerStats</span>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Intelligence:<strong>{" " + intelAcum}</strong>{" "}
-                  </p>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Strength: <strong>{" " + strenAcum}</strong>
-                  </p>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Speed: <strong>{" " + speedAcum}</strong>
-                  </p>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Durability: <strong>{" " + durabilAcum}</strong>
-                  </p>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Power: <strong>{" " + powerAcum}</strong>
-                  </p>
-                  <p style={{ fontSize: "medium" }}>
-                    Team Combat: <strong>{" " + combatAcum}</strong>
-                  </p>
+                  <div style={{ padding: "10px" }}>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Intelligence:<strong>{" " + intelAcum}</strong>{" "}
+                    </p>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Strength: <strong>{" " + strenAcum}</strong>
+                    </p>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Speed: <strong>{" " + speedAcum}</strong>
+                    </p>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Durability: <strong>{" " + durabilAcum}</strong>
+                    </p>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Power: <strong>{" " + powerAcum}</strong>
+                    </p>
+                    <p style={{ fontSize: "medium" }}>
+                      Team Combat: <strong>{" " + combatAcum}</strong>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-12">
+            <div className="row row-cols-3 g-12">
               {props.teamPlayers.map((hero) => (
                 <>
-                  <div className="row row-cols-1 row-cols-md-3 g-0">
-                    <SearchResultItem
-                      data={hero}
-                      key={hero.id}
-                      setTheArray={props.setTheArray}
-                      theArray={props.theArray}
-                      teamPlayers={props.teamPlayers}
-                      setTeamPlayers={props.setTeamPlayers}
-                    />
-                  </div>
+                  <SearchResultItem
+                    data={hero}
+                    key={hero.id}
+                    setTheArray={props.setTheArray}
+                    theArray={props.theArray}
+                    teamPlayers={props.teamPlayers}
+                    setTeamPlayers={props.setTeamPlayers}
+                    addHeroDisabled={props.addHeroDisabled} 
+                    setAddHeroDisabled={props.setAddHeroDisabled}
+                  />
                 </>
               ))}
             </div>

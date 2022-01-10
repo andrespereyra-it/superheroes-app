@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -28,6 +28,10 @@ function Home() {
   const [weightAvg, setWeightAvg] = useState([]);
 
   const [teamPlayers, setTeamPlayers] = useState([]);
+  console.log("teamPlayers", teamPlayers)
+  /* const [wentBack, setWentBack] = useState(false); */
+
+  const [addHeroDisabled, setAddHeroDisabled] = useState("");
 
   const [id, setId] = useState([]);
   const [name, setName] = useState([]);
@@ -60,6 +64,12 @@ function Home() {
     }
   }
 
+/*   useEffect(() => {
+    if(wentBack===true){
+      setTeamPlayers(JSON.parse(localStorage.getItem('teamPlayers')))
+    } 
+  }, [wentBack]) */
+
   return (
     <div className="App">
       <div className="App-content">
@@ -85,8 +95,10 @@ function Home() {
                 setName={setName}
                 image={image}
                 setImage={setImage}
+                addHeroDisabled={addHeroDisabled} 
+                setAddHeroDisabled={setAddHeroDisabled}
               />
-              <br />
+              <br /><br />
               <SearchBar searchText={searchText} handleChange={handleChange} />
 
               <SearchResults
@@ -117,6 +129,10 @@ function Home() {
                 setName={setName}
                 image={image}
                 setImage={setImage}
+                addHeroDisabled={addHeroDisabled} 
+                setAddHeroDisabled={setAddHeroDisabled}
+                /* wentBack={wentBack}
+                setWentBack={setWentBack} */
               />
             </div>
           </div>

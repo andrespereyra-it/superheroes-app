@@ -12,44 +12,44 @@ function SearchResultItem(props) {
   const [swapCard, setSwapCard] = useState(false);
 
   return (
-    <>
-      <div className="col-md-4">
-        <div className="card bg-dark text-white card-info">
+    <div /* className="flexbox-container" */>
+      <div /* className="col col-cards" */>
+        <div className="card bg-dark text-white flexbox-item">
           {swapCard ? (
-            <div className="card-info">
-              <HeroInfo
-                setSwapCard={setSwapCard}
-                data={data}
-                theArray={props.theArray}
-                setTheArray={props.setTheArray}
-                intelligenceSum={props.intelligenceSum}
-                setIntelligenceSum={props.setIntelligenceSum}
-                strengthSum={props.strengthSum}
-                setStrengthSum={props.setStrengthSum}
-                speedSum={props.speedSum}
-                setSpeedSum={props.setSpeedSum}
-                durabilSum={props.durabilSum}
-                setDurabilSum={props.setDurabilSum}
-                powerSum={props.powerSum}
-                setPowerSum={props.setPowerSum}
-                combatSum={props.combatSum}
-                setCombatSum={props.setCombatSum}
-                heightAvg={props.heightAvg}
-                setHeightAvg={props.setHeightAvg}
-                weightAvg={props.weightAvg}
-                setWeightAvg={props.setWeightAvg}
-                teamPlayers={props.teamPlayers}
-                setTeamPlayers={props.setTeamPlayers}
-              />
-            </div>
+            <HeroInfo
+              setSwapCard={setSwapCard}
+              data={data}
+              theArray={props.theArray}
+              setTheArray={props.setTheArray}
+              intelligenceSum={props.intelligenceSum}
+              setIntelligenceSum={props.setIntelligenceSum}
+              strengthSum={props.strengthSum}
+              setStrengthSum={props.setStrengthSum}
+              speedSum={props.speedSum}
+              setSpeedSum={props.setSpeedSum}
+              durabilSum={props.durabilSum}
+              setDurabilSum={props.setDurabilSum}
+              powerSum={props.powerSum}
+              setPowerSum={props.setPowerSum}
+              combatSum={props.combatSum}
+              setCombatSum={props.setCombatSum}
+              heightAvg={props.heightAvg}
+              setHeightAvg={props.setHeightAvg}
+              weightAvg={props.weightAvg}
+              setWeightAvg={props.setWeightAvg}
+              teamPlayers={props.teamPlayers}
+              setTeamPlayers={props.setTeamPlayers}
+              addHeroDisabled={props.addHeroDisabled} 
+              setAddHeroDisabled={props.setAddHeroDisabled}
+              /* wentBack={props.wentBack}
+              setWentBack={props.setWentBack} */
+            />
           ) : (
-            <div>
-              <HeroImage setSwapCard={setSwapCard} data={data} />
-            </div>
+            <HeroImage setSwapCard={setSwapCard} data={data} />
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

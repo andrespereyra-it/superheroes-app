@@ -15,7 +15,7 @@ function Header() {
   };
 
   return (
-    <header className="gf-header">
+    <header className="header">
       {isLogged ? (
         <Link href="#" onClick={handleClick} to="*">
           Logout

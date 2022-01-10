@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color: #282c34;
+  height: 100%;
+  margin-bottom: 0;
 }
 
 .App-content {
@@ -15,23 +17,55 @@
 
 .box {
   padding: 5rem;
-  background: radial-gradient(rgb(100, 100, 100), rgb(150, 150, 150), #5d5f63);
+  background: radial-gradient(#282c34, rgb(58, 156, 74), #282c34);
 }
 
-.card-info {
+.team-container {
+  padding: 15px;
+}
+
+.team-col-line{
+  border-right: 1px solid whitesmoke;
+}
+
+.flexbox-container {
   display: flex;
+  padding: 10px;
+}
+
+.flexbox-item {
   justify-content: center;
   align-items: center;
+  width: 300px;
+  height: 430px;
+}
+
+.card {
+  margin: 30px;
 }
 
 .card-title {
-  background: #757679;
+  background:#1e6044;
   width: 100%;
   margin-bottom: 0;
 }
 
+.card-img {
+  height: 430px;
+}
+
 .card:hover {
   box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.info-button {
+  line-height: 1 !important;
+  padding: 5px;
+  margin: 5px;
+}
+
+.btn-secondary {
+  margin: 2px;
 }
 
 .list {
@@ -41,8 +75,12 @@
 }
 
 form {
-  border: 1px solid rgba(0, 0, 0, 0.253);
+  border: 1px solid whitesmoke;
   padding: 3rem;
+}
+
+.form-label{
+  color: whitesmoke;
 }
 
 .loginForm .error {
@@ -56,8 +94,4 @@ form {
   font-size: 14px;
   padding-top: 20px;
   color: #02a802;
-}
-
-.btn-secondary {
-  margin: 2px;
 }
