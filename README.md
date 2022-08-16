@@ -14,4 +14,4 @@ It is an app to create a superheroes team with an external API. After login, we 
 * Bootstrap - https://getbootstrap.com/
 * create-react-app - https://www.npmjs.com/package/create-react-app
 * Formik - https://formik.org/
-* Superhero API - https://superheroapi.com/ 
+* Superhero API - https://www.superheroapi.com/ 
