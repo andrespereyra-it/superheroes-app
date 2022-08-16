@@ -7,7 +7,7 @@ const getAuthorizationHeader = () => {
   }; */
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://superheroapi.com/api/10160325470374276/',
+    baseURL: 'https://www.superheroapi.com/api/10160325470374276/',
     headers: {
         'Access-Control-Allow-Origin' : '*'
     }
