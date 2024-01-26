@@ -1,13 +1,13 @@
 import axios from "axios";
 
-/* const token = 10160325470374276;
+ const token = 10160325470374276n;
 
-const getAuthorizationHeader = () => {
+/* const getAuthorizationHeader = () => {
     return { Authorization: `Bearer: ${token}` };
   }; */
 
 export const axiosInstance = axios.create({
-    baseURL: 'https://www.superheroapi.com/api/10160325470374276/',
+    baseURL: `https://www.superheroapi.com/api/${token}/`,
     headers: {
         'Access-Control-Allow-Origin' : '*'
     }
