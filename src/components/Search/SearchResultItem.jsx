@@ -12,27 +12,17 @@ function SearchResultItem(props) {
   const [swapCard, setSwapCard] = useState(false);
 
   return (
-    <div /* className="flexbox-container" */>
-      <div /* className="col col-cards" */>
+    <div>
+      <div>
         <div className="card bg-dark text-white flexbox-item">
           {swapCard ? (
             <HeroInfo
+              skillsAmount={props.skillsAmount}
+              setSkillsAmount={props.setSkillsAmount}
               setSwapCard={setSwapCard}
               data={data}
-              theArray={props.theArray}
-              setTheArray={props.setTheArray}
-              intelligenceSum={props.intelligenceSum}
-              setIntelligenceSum={props.setIntelligenceSum}
-              strengthSum={props.strengthSum}
-              setStrengthSum={props.setStrengthSum}
-              speedSum={props.speedSum}
-              setSpeedSum={props.setSpeedSum}
-              durabilSum={props.durabilSum}
-              setDurabilSum={props.setDurabilSum}
-              powerSum={props.powerSum}
-              setPowerSum={props.setPowerSum}
-              combatSum={props.combatSum}
-              setCombatSum={props.setCombatSum}
+              heroesTeam={props.heroesTeam}
+              setHeroesTeam={props.setHeroesTeam}
               heightAvg={props.heightAvg}
               setHeightAvg={props.setHeightAvg}
               weightAvg={props.weightAvg}
@@ -41,8 +31,6 @@ function SearchResultItem(props) {
               setTeamPlayers={props.setTeamPlayers}
               addHeroDisabled={props.addHeroDisabled} 
               setAddHeroDisabled={props.setAddHeroDisabled}
-              /* wentBack={props.wentBack}
-              setWentBack={props.setWentBack} */
             />
           ) : (
             <HeroImage setSwapCard={setSwapCard} data={data} />

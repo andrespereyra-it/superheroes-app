@@ -6,77 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
 const Team = (props) => {
-  const [intelAcum, setIntelAcum] = useState(0);
-  const [strenAcum, setStrenAcum] = useState(0);
-  const [speedAcum, setSpeedAcum] = useState(0);
-  const [durabilAcum, setDurabilAcum] = useState(0);
-  const [powerAcum, setPowerAcum] = useState(0);
-  const [combatAcum, setCombatAcum] = useState(0);
 
   const [heightAvg, setHeightAvg] = useState(0);
   const [weightAvg, setWeightAvg] = useState(0);
 
   useEffect(() => {
-    const sumIntel = () => {
-      const acumIntel = props.intelligenceSum
-        .map((intel) => parseFloat(intel))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setIntelAcum(acumIntel);
-    };
-    sumIntel();
-
-    const sumStren = () => {
-      const acumStren = props.strengthSum
-        .map((stren) => parseFloat(stren))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setStrenAcum(acumStren);
-    };
-    sumStren();
-
-    const sumSpeed = () => {
-      const acumSpeed = props.speedSum
-        .map((speed) => parseFloat(speed))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setSpeedAcum(acumSpeed);
-    };
-    sumSpeed();
-
-    const sumDurabil = () => {
-      const acumDurabil = props.durabilSum
-        .map((durabil) => parseFloat(durabil))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setDurabilAcum(acumDurabil);
-    };
-    sumDurabil();
-
-    const sumPower = () => {
-      const acumPower = props.powerSum
-        .map((power) => parseFloat(power))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setPowerAcum(acumPower);
-    };
-    sumPower();
-
-    const sumCombat = () => {
-      const acumCombat = props.combatSum
-        .map((combat) => parseFloat(combat))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setCombatAcum(acumCombat);
-    };
-    sumCombat();
-
     const avgHeight = () => {
       const acumAvgHeight = props.heightAvg
         .map((height) => parseFloat(height))
@@ -97,20 +31,14 @@ const Team = (props) => {
     };
     avgWeight();
   }, [
-    props.theArray,
-    props.intelligenceSum,
-    props.strengthSum,
-    props.speedSum,
-    props.durabilSum,
-    props.powerSum,
-    props.combatSum,
+    props.heroesTeam,
     props.heightAvg,
     props.weightAvg,
   ]);
 
   return (
     <div className="team-container border border-white">
-      {props.theArray.length === 0 ? (
+      {props.heroesTeam.length === 0 ? (
         <p className="py-4 text-center text-white">
           You don't have a team yet, please add a hero.
         </p>
@@ -137,22 +65,22 @@ const Team = (props) => {
                   <span className="display-6">PowerStats</span>
                   <div style={{ padding: "10px" }}>
                     <p style={{ fontSize: "medium" }}>
-                      Team Intelligence:<strong>{" " + intelAcum}</strong>{" "}
+                      Team Intelligence:<strong>{" " + props.skillsAmount.intelligence}</strong>{" "}
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Strength: <strong>{" " + strenAcum}</strong>
+                      Team Strength: <strong>{" " + props.skillsAmount.strength}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Speed: <strong>{" " + speedAcum}</strong>
+                      Team Speed: <strong>{" " + props.skillsAmount.speed}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Durability: <strong>{" " + durabilAcum}</strong>
+                      Team Durability: <strong>{" " + props.skillsAmount.durability}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Power: <strong>{" " + powerAcum}</strong>
+                      Team Power: <strong>{" " + props.skillsAmount.power}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Combat: <strong>{" " + combatAcum}</strong>
+                      Team Combat: <strong>{" " + props.skillsAmount.combat}</strong>
                     </p>
                   </div>
                 </div>
@@ -167,8 +95,8 @@ const Team = (props) => {
                   <SearchResultItem
                     data={hero}
                     key={hero.id}
-                    setTheArray={props.setTheArray}
-                    theArray={props.theArray}
+                    setHeroesTeam={props.setHeroesTeam}
+                    heroesTeam={props.heroesTeam}
                     teamPlayers={props.teamPlayers}
                     setTeamPlayers={props.setTeamPlayers}
                     addHeroDisabled={props.addHeroDisabled} 

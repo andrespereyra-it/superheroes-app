@@ -19,14 +19,16 @@ function Home() {
   const [searchText, setSearchText] = useState("");
   const [superheroData, setSuperheroData] = useState([]);
 
-  const [theArray, setTheArray] = useState([]);
+  const [heroesTeam, setHeroesTeam] = useState([]);
 
-  const [intelligenceSum, setIntelligenceSum] = useState([]);
-  const [strengthSum, setStrengthSum] = useState([]);
-  const [speedSum, setSpeedSum] = useState([]);
-  const [durabilSum, setDurabilSum] = useState([]);
-  const [powerSum, setPowerSum] = useState([]);
-  const [combatSum, setCombatSum] = useState([]);
+  const [skillsAmount, setSkillsAmount] = useState({
+    intelligence: 0,
+    strength: 0,
+    speed: 0,
+    durability: 0,
+    power: 0,
+    combat: 0
+  })
 
   const [heightAvg, setHeightAvg] = useState([]);
   const [weightAvg, setWeightAvg] = useState([]);
@@ -98,13 +100,9 @@ function Home() {
           <div className="box">
             <div>
               <Team
-                theArray={theArray}
-                intelligenceSum={intelligenceSum}
-                strengthSum={strengthSum}
-                speedSum={speedSum}
-                durabilSum={durabilSum}
-                powerSum={powerSum}
-                combatSum={combatSum}
+              skillsAmount={skillsAmount}
+               setSkillsAmount={setSkillsAmount}
+                heroesTeam={heroesTeam}
                 heightAvg={heightAvg}
                 weightAvg={weightAvg}
                 superheroData={superheroData}
@@ -123,21 +121,11 @@ function Home() {
               <SearchBar searchText={searchText} handleChange={handleChange} />
 
               <SearchResults
+              skillsAmount={skillsAmount}
+              setSkillsAmount={setSkillsAmount}
                 superheroData={superheroData}
-                theArray={theArray}
-                setTheArray={setTheArray}
-                intelligenceSum={intelligenceSum}
-                setIntelligenceSum={setIntelligenceSum}
-                strengthSum={strengthSum}
-                setStrengthSum={setStrengthSum}
-                speedSum={speedSum}
-                setSpeedSum={setSpeedSum}
-                durabilSum={durabilSum}
-                setDurabilSum={setDurabilSum}
-                powerSum={powerSum}
-                setPowerSum={setPowerSum}
-                combatSum={combatSum}
-                setCombatSum={setCombatSum}
+                heroesTeam={heroesTeam}
+                setHeroesTeam={setHeroesTeam}
                 heightAvg={heightAvg}
                 setHeightAvg={setHeightAvg}
                 weightAvg={weightAvg}
