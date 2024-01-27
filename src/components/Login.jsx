@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 
-import useUser from "./hooks/useUser";
+import useUser from "../hooks/useUser";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";

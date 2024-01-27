@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import HeroDetail from "./components/Hero/HeroDetail";
 import Login from "./components/Login";
 import Header from "./components/Header/index";
-import { UserContextProvider } from "./components/context/UserContext";
+import { UserContextProvider } from "./context/UserContext";
 
 import "./App.css";
 

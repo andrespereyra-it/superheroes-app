@@ -5,11 +5,15 @@ import axios from "axios";
 import SearchBar from "./Search/SearchBar";
 import SearchResults from "./Search/SearchResults";
 import Team from "./Team";
-import useUser from "./hooks/useUser";
+import useUser from "../hooks/useUser";
+import { axiosInstance } from "../services/apiService";
 
 import "../App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getHeroes } from "../store/heroesSlice";
 
 function Home() {
+
   const { isLogged } = useUser();
 
   const [searchText, setSearchText] = useState("");
@@ -28,8 +32,6 @@ function Home() {
   const [weightAvg, setWeightAvg] = useState([]);
 
   const [teamPlayers, setTeamPlayers] = useState([]);
-  console.log("teamPlayers", teamPlayers)
-  /* const [wentBack, setWentBack] = useState(false); */
 
   const [addHeroDisabled, setAddHeroDisabled] = useState("");
 
@@ -39,16 +41,39 @@ function Home() {
 
   const history = useHistory();
 
-  const searchSuperHeroes = async () => {
+  /* const searchSuperHeroes = async () => {
     try {
-      const res = await axios(
-        `https://superheroapi.com/api/10160325470374276/search/${searchText}`
-      );
+      //const res = await axios(`http://superheroapi.com/api/10160325470374276/search/${searchText}`);
+      const res = await axiosInstance.get(`/search/${searchText}`)
       setSuperheroData(res.data.results);
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
+
+  const heroes = useSelector((state) => state.heroes.value)
+  const dispatch = useDispatch()
+
+  /* useEffect(() => {
+    dispatch(getHeroes())
+    console.log("heroes", heroes)
+  }, [dispatch, heroes]) */
+
+  const searchSuperHeroes = () => {
+  fetch(`https://www.superheroapi.com/api/10160325470374276/search/${searchText}`)
+  .then(response => {
+    //console.log("Full Response:", response);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    //console.log("API Response:", data)
+    setSuperheroData(data.results)
+  })
+  .catch(error => console.error("Error:", error));
+}
 
   function handleChange(e) {
     const searchTerm = e.target.value;
@@ -64,11 +89,7 @@ function Home() {
     }
   }
 
-/*   useEffect(() => {
-    if(wentBack===true){
-      setTeamPlayers(JSON.parse(localStorage.getItem('teamPlayers')))
-    } 
-  }, [wentBack]) */
+  console.log("superheroData", superheroData)
 
   return (
     <div className="App">
@@ -131,8 +152,6 @@ function Home() {
                 setImage={setImage}
                 addHeroDisabled={addHeroDisabled} 
                 setAddHeroDisabled={setAddHeroDisabled}
-                /* wentBack={wentBack}
-                setWentBack={setWentBack} */
               />
             </div>
           </div>
