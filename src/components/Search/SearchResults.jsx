@@ -3,22 +3,24 @@ import React from "react";
 import SearchResultItem from "./SearchResultItem";
 
 import "../../App.css";
+import { useSelector } from "react-redux";
 
 function SearchResults(props) {
-  const { superheroData = [] } = props;
+
+  const heroes = useSelector(state => state.heroesByName.heroes.results);
 
   return (
     <>
       <br />
       <div className="row row-cols-3">
-        {superheroData.map((superhero) => (
+        {heroes?.map((hero) => (
           <SearchResultItem
             skillsAmount={props.skillsAmount}
             setSkillsAmount={props.setSkillsAmount}
             average={props.average}
             setAverage={props.setAverage}
-            data={superhero}
-            key={superhero.id}
+            hero={hero}
+            key={hero.id}
             setHeroesTeam={props.setHeroesTeam}
             heroesTeam={props.heroesTeam}
             heightAvg={props.heightAvg}

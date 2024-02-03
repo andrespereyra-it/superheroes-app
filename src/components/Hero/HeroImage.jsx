@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 
 function HeroImage(props) {
-  const { data } = props;
+  const { data, hero } = props;
 
   return (
     <>
@@ -15,11 +15,11 @@ function HeroImage(props) {
       >
         <img
           className="card-img"
-          src={data && data.image.url}
-          alt={data && data.id}
+          src={hero && hero.image.url}
+          alt={hero && hero.id}
         />
         <div className="card-img-overlay">
-          <h5 className="card-title">{data && data.name}</h5>
+          <h5 className="card-title">{hero && hero.name}</h5>
         </div>
       </div>
     </>

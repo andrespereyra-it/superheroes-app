@@ -6,9 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
 const Team = (props) => {
-  //console.log("props", props)
   const [heightAvg, setHeightAvg] = useState(0);
   const [weightAvg, setWeightAvg] = useState(0);
+  
+  console.log("teamPlayers", props.teamPlayers)
 
   /* const avgHeight = () => {
     //const acumAvgHeight = props.heightAvg
@@ -98,7 +99,7 @@ const Team = (props) => {
               {props.teamPlayers.map((hero) => (
                 <>
                   <SearchResultItem
-                    data={hero}
+                    hero={hero}
                     key={hero.id}
                     setHeroesTeam={props.setHeroesTeam}
                     heroesTeam={props.heroesTeam}

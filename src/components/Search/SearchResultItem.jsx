@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 
 function SearchResultItem(props) {
-  const { data } = props;
 
   const [swapCard, setSwapCard] = useState(false);
 
@@ -22,7 +21,7 @@ function SearchResultItem(props) {
               average={props.average}
               setAverage={props.setAverage}
               setSwapCard={setSwapCard}
-              data={data}
+              hero={props.hero}
               heroesTeam={props.heroesTeam}
               setHeroesTeam={props.setHeroesTeam}
               heightAvg={props.heightAvg}
@@ -35,7 +34,7 @@ function SearchResultItem(props) {
               setAddHeroDisabled={props.setAddHeroDisabled}
             />
           ) : (
-            <HeroImage setSwapCard={setSwapCard} data={data} />
+            <HeroImage setSwapCard={setSwapCard} hero={props.hero}/>
           )}
         </div>
       </div>

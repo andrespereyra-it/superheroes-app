@@ -16,7 +16,6 @@ function Home() {
   const { isLogged } = useUser();
 
   const [searchText, setSearchText] = useState("");
-  const [superheroData, setSuperheroData] = useState([]);
 
   const [heroesTeam, setHeroesTeam] = useState([]);
 
@@ -43,17 +42,6 @@ function Home() {
 
   const history = useHistory();
 
-  /* const searchSuperHeroes = async () => {
-    try {
-      //const res = await axios(`http://superheroapi.com/api/10160325470374276/search/${searchText}`);
-      const res = await axiosInstance.get(`/search/${searchText}`)
-      setSuperheroData(res.data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
-
-  const heroes = useSelector(state => state.heroesByName.heroes.results);
   const dispatch = useDispatch();
 
   const searchSuperHeroes = () => {
@@ -63,32 +51,9 @@ function Home() {
       .then( response => response.json())
       .then( data => {
         dispatch(getHeroesByName(data))
-        console.log("fetch", data)
-        setSuperheroData(heroes) //BORRAR
       })
       .catch(error => console.log(error))
   }
-
-  console.log("heroesByName", heroes)
-
-  
-  /* const searchSuperHeroes = () => {
-    fetch(
-      `https://www.superheroapi.com/api/10160325470374276/search/${searchText}`
-    )
-      .then((response) => {
-        //console.log("Full Response:", response);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        //console.log("API Response:", data)
-        setSuperheroData(data.results);
-      })
-      .catch((error) => console.error("Error:", error));
-  }; */
 
   function handleChange(e) {
     const searchTerm = e.target.value;
@@ -97,7 +62,7 @@ function Home() {
 
     setSearchText(searchTerm);
     if (searchTerm.length === 0) {
-      setSuperheroData([]);
+      //setSuperheroData([]);
     }
     if (searchTerm.length > 3) {
       searchSuperHeroes();
@@ -118,7 +83,6 @@ function Home() {
                 heroesTeam={heroesTeam}
                 heightAvg={heightAvg}
                 weightAvg={weightAvg}
-                superheroData={superheroData}
                 teamPlayers={teamPlayers}
                 setTeamPlayers={setTeamPlayers}
                 addHeroDisabled={addHeroDisabled}
@@ -133,7 +97,6 @@ function Home() {
                 setSkillsAmount={setSkillsAmount}
                 average={average}
                 setAverage={setAverage}
-                superheroData={superheroData}
                 heroesTeam={heroesTeam}
                 setHeroesTeam={setHeroesTeam}
                 heightAvg={heightAvg}
