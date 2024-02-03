@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import heroesReducer from './heroesSlice'
+import heroesByNameReducer from './heroesByNameSlice'
 
 export default configureStore({
   reducer: {
-    heroes: heroesReducer,
+    heroesByName: heroesByNameReducer,
   },
 })

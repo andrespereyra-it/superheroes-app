@@ -10,10 +10,9 @@ import { axiosInstance } from "../services/apiService";
 
 import "../App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getHeroes } from "../store/heroesSlice";
+import { getHeroesByName } from "../store/heroesByNameSlice";
 
 function Home() {
-
   const { isLogged } = useUser();
 
   const [searchText, setSearchText] = useState("");
@@ -27,19 +26,20 @@ function Home() {
     speed: 0,
     durability: 0,
     power: 0,
-    combat: 0
-  })
+    combat: 0,
+  });
 
   const [heightAvg, setHeightAvg] = useState([]);
   const [weightAvg, setWeightAvg] = useState([]);
 
+  const [average, setAverage] = useState({
+    height: [],
+    weight: []
+  })
+
   const [teamPlayers, setTeamPlayers] = useState([]);
 
   const [addHeroDisabled, setAddHeroDisabled] = useState("");
-
-  const [id, setId] = useState([]);
-  const [name, setName] = useState([]);
-  const [image, setImage] = useState([]);
 
   const history = useHistory();
 
@@ -53,29 +53,42 @@ function Home() {
     }
   }; */
 
-  const heroes = useSelector((state) => state.heroes.value)
-  const dispatch = useDispatch()
-
-  /* useEffect(() => {
-    dispatch(getHeroes())
-    console.log("heroes", heroes)
-  }, [dispatch, heroes]) */
+  const heroes = useSelector(state => state.heroesByName.heroes.results);
+  const dispatch = useDispatch();
 
   const searchSuperHeroes = () => {
-  fetch(`https://www.superheroapi.com/api/10160325470374276/search/${searchText}`)
-  .then(response => {
-    //console.log("Full Response:", response);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    //console.log("API Response:", data)
-    setSuperheroData(data.results)
-  })
-  .catch(error => console.error("Error:", error));
-}
+    searchText && fetch(
+      `https://www.superheroapi.com/api/10160325470374276/search/${searchText}`
+    )
+      .then( response => response.json())
+      .then( data => {
+        dispatch(getHeroesByName(data))
+        console.log("fetch", data)
+        setSuperheroData(heroes) //BORRAR
+      })
+      .catch(error => console.log(error))
+  }
+
+  console.log("heroesByName", heroes)
+
+  
+  /* const searchSuperHeroes = () => {
+    fetch(
+      `https://www.superheroapi.com/api/10160325470374276/search/${searchText}`
+    )
+      .then((response) => {
+        //console.log("Full Response:", response);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        //console.log("API Response:", data)
+        setSuperheroData(data.results);
+      })
+      .catch((error) => console.error("Error:", error));
+  }; */
 
   function handleChange(e) {
     const searchTerm = e.target.value;
@@ -91,8 +104,6 @@ function Home() {
     }
   }
 
-  console.log("superheroData", superheroData)
-
   return (
     <div className="App">
       <div className="App-content">
@@ -100,29 +111,28 @@ function Home() {
           <div className="box">
             <div>
               <Team
-              skillsAmount={skillsAmount}
-               setSkillsAmount={setSkillsAmount}
+                skillsAmount={skillsAmount}
+                setSkillsAmount={setSkillsAmount}
+                average={average}
+                setAverage={setAverage}
                 heroesTeam={heroesTeam}
                 heightAvg={heightAvg}
                 weightAvg={weightAvg}
                 superheroData={superheroData}
                 teamPlayers={teamPlayers}
                 setTeamPlayers={setTeamPlayers}
-                id={id}
-                setId={setId}
-                name={name}
-                setName={setName}
-                image={image}
-                setImage={setImage}
-                addHeroDisabled={addHeroDisabled} 
+                addHeroDisabled={addHeroDisabled}
                 setAddHeroDisabled={setAddHeroDisabled}
               />
-              <br /><br />
+              <br />
+              <br />
               <SearchBar searchText={searchText} handleChange={handleChange} />
 
               <SearchResults
-              skillsAmount={skillsAmount}
-              setSkillsAmount={setSkillsAmount}
+                skillsAmount={skillsAmount}
+                setSkillsAmount={setSkillsAmount}
+                average={average}
+                setAverage={setAverage}
                 superheroData={superheroData}
                 heroesTeam={heroesTeam}
                 setHeroesTeam={setHeroesTeam}
@@ -132,13 +142,7 @@ function Home() {
                 setWeightAvg={setWeightAvg}
                 teamPlayers={teamPlayers}
                 setTeamPlayers={setTeamPlayers}
-                id={id}
-                setId={setId}
-                name={name}
-                setName={setName}
-                image={image}
-                setImage={setImage}
-                addHeroDisabled={addHeroDisabled} 
+                addHeroDisabled={addHeroDisabled}
                 setAddHeroDisabled={setAddHeroDisabled}
               />
             </div>

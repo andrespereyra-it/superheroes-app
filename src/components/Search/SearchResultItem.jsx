@@ -19,6 +19,8 @@ function SearchResultItem(props) {
             <HeroInfo
               skillsAmount={props.skillsAmount}
               setSkillsAmount={props.setSkillsAmount}
+              average={props.average}
+              setAverage={props.setAverage}
               setSwapCard={setSwapCard}
               data={data}
               heroesTeam={props.heroesTeam}
@@ -29,7 +31,7 @@ function SearchResultItem(props) {
               setWeightAvg={props.setWeightAvg}
               teamPlayers={props.teamPlayers}
               setTeamPlayers={props.setTeamPlayers}
-              addHeroDisabled={props.addHeroDisabled} 
+              addHeroDisabled={props.addHeroDisabled}
               setAddHeroDisabled={props.setAddHeroDisabled}
             />
           ) : (

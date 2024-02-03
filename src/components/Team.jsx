@@ -6,19 +6,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
 const Team = (props) => {
-
+  //console.log("props", props)
   const [heightAvg, setHeightAvg] = useState(0);
   const [weightAvg, setWeightAvg] = useState(0);
 
-  useEffect(() => {
-    const avgHeight = () => {
-      const acumAvgHeight = props.heightAvg
-        .map((height) => parseFloat(height))
-        .reduce((previous, current) => {
-          return previous + current;
-        }, 0);
-      setHeightAvg(acumAvgHeight / props.heightAvg.length);
-    };
+  /* const avgHeight = () => {
+    //const acumAvgHeight = props.heightAvg
+    const acumAvgHeight = props && props?.average.height
+      .map((height) => parseFloat(height))
+      .reduce((previous, current) => {
+        return previous + current;
+      }, 0);
+    //setHeightAvg(acumAvgHeight / props.heightAvg.length);
+    props.setAverage(acumAvgHeight / props.average.height.length)
+  }; */
+
+  /* useEffect(() => {
+    
     avgHeight();
 
     const avgWeight = () => {
@@ -30,11 +34,7 @@ const Team = (props) => {
       setWeightAvg(acumAvgWeight / props.weightAvg.length);
     };
     avgWeight();
-  }, [
-    props.heroesTeam,
-    props.heightAvg,
-    props.weightAvg,
-  ]);
+  }, [props.heroesTeam, props.average.height, props.weightAvg]); */
 
   return (
     <div className="team-container border border-white">
@@ -47,40 +47,45 @@ const Team = (props) => {
           <div className="container text-white">
             <div className="row justify-content-around">
               <div className="col-md-6 team-col-line">
-              <div style={{paddingTop:"30px"}} className="mb-4">
-                <span className="display-6">
-                  Your Team Statistics
-                  </span>
+                <div style={{ paddingTop: "30px" }} className="mb-4">
+                  <span className="display-6">Your Team Statistics</span>
                   <div style={{ padding: "90px" }}>
                     <p style={{ fontSize: "large" }}>
-                      Average Height {heightAvg}{" "}
+                      Average Height {props.average.height}{" "}
                     </p>
                     <p style={{ fontSize: "large" }}>
                       Average Weight {weightAvg}{" "}
                     </p>
-                  </div></div>
+                  </div>
+                </div>
               </div>
               <div className="col-md-6">
-                <div style={{paddingTop:"30px"}} className="mb-4">
+                <div style={{ paddingTop: "30px" }} className="mb-4">
                   <span className="display-6">PowerStats</span>
                   <div style={{ padding: "10px" }}>
                     <p style={{ fontSize: "medium" }}>
-                      Team Intelligence:<strong>{" " + props.skillsAmount.intelligence}</strong>{" "}
+                      Team Intelligence:
+                      <strong>{" " + props.skillsAmount.intelligence}</strong>{" "}
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Strength: <strong>{" " + props.skillsAmount.strength}</strong>
+                      Team Strength:{" "}
+                      <strong>{" " + props.skillsAmount.strength}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Speed: <strong>{" " + props.skillsAmount.speed}</strong>
+                      Team Speed:{" "}
+                      <strong>{" " + props.skillsAmount.speed}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Durability: <strong>{" " + props.skillsAmount.durability}</strong>
+                      Team Durability:{" "}
+                      <strong>{" " + props.skillsAmount.durability}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Power: <strong>{" " + props.skillsAmount.power}</strong>
+                      Team Power:{" "}
+                      <strong>{" " + props.skillsAmount.power}</strong>
                     </p>
                     <p style={{ fontSize: "medium" }}>
-                      Team Combat: <strong>{" " + props.skillsAmount.combat}</strong>
+                      Team Combat:{" "}
+                      <strong>{" " + props.skillsAmount.combat}</strong>
                     </p>
                   </div>
                 </div>
@@ -99,7 +104,7 @@ const Team = (props) => {
                     heroesTeam={props.heroesTeam}
                     teamPlayers={props.teamPlayers}
                     setTeamPlayers={props.setTeamPlayers}
-                    addHeroDisabled={props.addHeroDisabled} 
+                    addHeroDisabled={props.addHeroDisabled}
                     setAddHeroDisabled={props.setAddHeroDisabled}
                   />
                 </>

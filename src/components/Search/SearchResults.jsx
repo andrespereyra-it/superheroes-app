@@ -13,8 +13,10 @@ function SearchResults(props) {
       <div className="row row-cols-3">
         {superheroData.map((superhero) => (
           <SearchResultItem
-          skillsAmount={props.skillsAmount}
-               setSkillsAmount={props.setSkillsAmount}
+            skillsAmount={props.skillsAmount}
+            setSkillsAmount={props.setSkillsAmount}
+            average={props.average}
+            setAverage={props.setAverage}
             data={superhero}
             key={superhero.id}
             setHeroesTeam={props.setHeroesTeam}
@@ -25,7 +27,7 @@ function SearchResults(props) {
             setWeightAvg={props.setWeightAvg}
             teamPlayers={props.teamPlayers}
             setTeamPlayers={props.setTeamPlayers}
-            addHeroDisabled={props.addHeroDisabled} 
+            addHeroDisabled={props.addHeroDisabled}
             setAddHeroDisabled={props.setAddHeroDisabled}
           />
         ))}
